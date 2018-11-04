@@ -156,18 +156,24 @@ $(ProvisionManager.Load);
     </fieldset>
     <fieldset>
         <legend>Provisions</legend>
-        <table id="provision-table" data-refresh-url="{{url('provisionRecomendations')}}">
-            <tr><th>Provision</th><th>Taken</th><th>Unused</th><th>Lacking</th><th>Recomended</th></tr>
+        <div class="table-responsive">
+        <table id="provision-table" data-refresh-url="{{url('provisionRecomendations')}}" class="table table-sm">
+            <thead>
+                <tr><th scope="col">Provision</th><th scope="col">Taken</th><th scope="col">Unused</th><th scope="col">Lacking</th><th scope="col">Recomended</th></tr>
+            </thead>
+            <tbody>
             @foreach($provisions as $provision)
                 <tr>
                     <td>{{$provision->name}}</td>
-                    <td><input type="text" name="provision[{{$provision->id}}]['taken']" class="col-3"></td>
-                    <td><input type="text" name="provision[{{$provision->id}}]['unused']" class="col-3"></td>
-                    <td><input type="text" name="provision[{{$provision->id}}]['lacking']" class="col-3"></td>
+                    <td><input type="text" name="provision[{{$provision->id}}][taken]" class="form-control form-control-"></td>
+                    <td><input type="text" name="provision[{{$provision->id}}][unused]" class="form-control form-control-"></td>
+                    <td><input type="text" name="provision[{{$provision->id}}][lacking]" class="form-control form-control-"></td>
                     <td><span id="provision-{{$provision->id}}-suggestion" class="col-3">{{$provision->recommended}}</span></td>
-                    </tr>
+                </tr>
             @endforeach
+            </tbody>
         </table>
+        </div>
     </fieldset>
     <div>
         <label for="successful-run">Was the run successful?</label>

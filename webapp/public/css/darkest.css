@@ -85,6 +85,77 @@ body {
   }
 }
 
+.modal-content {
+    background-color: #272727;
+}
+
+.btn-primary {
+    background-color: #341e1e;
+    border-color: #341e1e;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary.focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary, .btn-primary:active:focus {
+    background-color: #451e1e !important;
+    border-color: #341e1e !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.btn-secondary {
+    background-color: #231414;
+    border-color: #231e1e;
+    color: #aaa;
+}
+
+.btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active, .btn-secondary.active, .open>.dropdown-toggle.btn-secondary {
+    background-color: #341414 !important;
+    border-color: #231e1e !important;
+    color: #aaa;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.selectable-character{
+    padding: 10px;
+    margin: 1px;
+}
+
+.selected-character {
+    background-color: #2B4D2B;
+}
+
+.unselected-character {
+    background-color: #2B2B2B;
+}
+
+.recommended-character {
+    background-color: #2B3C2B
+}
+
+.unrecommended-character {
+    background-color: #662B2B
+}
+
+#provision-table tr:nth-child(even) {
+    background-color: #1B1B1B;
+}
+
+.character-slot {
+    width: 50px;
+}
+
+@media (min-width: 390px) {
+    .character-slot {
+        width: 70px;
+    }
+}
+@media (min-width: 524px) {
+    .character-slot {
+        width: 100px;
+    }
+}
+
+
+
 
 /*
  * Cover

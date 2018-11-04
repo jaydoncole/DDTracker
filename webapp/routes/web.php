@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Route::get('/dungeonRun', 'DungeonRunController@StartRun')->name('dungeonRun');
 Route::post('/saveDungeonRun', 'DungeonRunController@SaveRun')->name('saveDungeonRun');
+Route::get('/characterSelection/{slot}/{location}', 'DungeonRunController@GetCharacterSelection')->name('characterSelection');
+Route::get('/provisionRecomendations/{location}/{length}', 'DungeonRunController@GetProvisionRecomendations')->name('provisionRecomendations');
 
 Route::get('/statistics', 'StatisticsController@Index')->name('statistics');
 

@@ -77,6 +77,7 @@ var ProvisionManager = {
             console.log(data);
             for(var i=0; i < data.length; i++) {
                 $('#provision-' + data[i].provision_id + '-suggestion').text(data[i].recomendation);
+                $('#provision-' + data[i].provision_id + '-taken').val(data[i].recomendation);
             }
         });
     }
@@ -165,7 +166,7 @@ $(ProvisionManager.Load);
             @foreach($provisions as $provision)
                 <tr>
                     <td>{{$provision->name}}</td>
-                    <td><input type="text" name="provision[{{$provision->id}}][taken]" class="form-control form-control-"></td>
+                    <td><input type="text" id="provision-{{$provision->id}}-taken" name="provision[{{$provision->id}}][taken]" class="form-control form-control-" value="{{$provision->recommended}}"></td>
                     <td><input type="text" name="provision[{{$provision->id}}][unused]" class="form-control form-control-"></td>
                     <td><input type="text" name="provision[{{$provision->id}}][lacking]" class="form-control form-control-"></td>
                     <td><span id="provision-{{$provision->id}}-suggestion" class="col-3">{{$provision->recommended}}</span></td>

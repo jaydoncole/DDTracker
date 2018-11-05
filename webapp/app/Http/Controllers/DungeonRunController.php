@@ -80,7 +80,7 @@ class DungeonRunController extends Controller
                 ->get();
             $provisionRecomendations[] = array(
                 'provision_id' => $provision->id, 
-                'recomendation' => (count($provisionDetails) > 2) 
+                'recomendation' => (count($provisionDetails) > 10) 
                     ? $this->CalculateProvisionDetails($provisionDetails)
                     : $this->GetDefaultProvisionRecomendations($location, $length, $provision->id));
         }

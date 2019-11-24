@@ -43,7 +43,7 @@ class InitialMigration extends Migration
         });
 
 
-        Schema::create('character_recomendation_codes', function(Blueprint $table) {
+        Schema::create('character_recommendation_codes', function(Blueprint $table) {
             $table->increments('id');
             $table->string('description');
         });
@@ -52,10 +52,10 @@ class InitialMigration extends Migration
             $table->increments('id');
             $table->unsignedInteger('character_id');
             $table->unsignedInteger('location_id');
-            $table->unsignedInteger('recomendation_code');
+            $table->unsignedInteger('recommendation_code');
             $table->foreign('character_id')->references('id')->on('characters');
             $table->foreign('location_id')->references('id')->on('locations');
-            $table->foreign('recomendation_code')->references('id')->on('character_recomendation_codes');
+            $table->foreign('recommendation_code')->references('id')->on('character_recommendation_codes');
         });
 
         Schema::create('provisions', function (Blueprint $table) {
@@ -66,7 +66,7 @@ class InitialMigration extends Migration
         });
 
 
-        Schema::create('starting_provision_recomendations', function(Blueprint $table) {
+        Schema::create('starting_provision_recommendations', function(Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('location_id');
             $table->unsignedInteger('location_length');
@@ -84,7 +84,7 @@ class InitialMigration extends Migration
             $table->unsignedInteger('difficulty_level');
             $table->boolean('run_completed');
             $table->string('notes', 300)->default('');
-            $table->timestamp('run_time')->nullable;
+            $table->timestamp('run_time')->nullable();
             $table->foreign('location_id')->references('id')->on('locations');
             $table->foreign('location_length')->references('id')->on('location_lengths');
             $table->foreign('difficulty_level')->references('id')->on('difficulty_levels');
@@ -164,7 +164,7 @@ class InitialMigration extends Migration
                 array('name' => 'Shieldbreaker', 'description' => 'Highly mobile character that does blight damage, can break gaurd, and reveal stealthed enemies.', 'icon' => 'shieldbreaker.png')
         ));
 
-        DB::table('character_recomendation_codes')->insert(
+        DB::table('character_recommendation_codes')->insert(
             array(
                 array('description' => 'Recommended'),
                 array('description' => 'Acceptable'),
@@ -193,12 +193,12 @@ class InitialMigration extends Migration
         Schema::table('character_location_pairings', function(Blueprint $table) {
             $table->dropForeign('character_location_pairings_character_id_foreign');
             $table->dropForeign('character_location_pairings_location_id_foreign');
-            $table->dropForeign('character_location_pairings_recomendation_code_foreign');
+            $table->dropForeign('character_location_pairings_recommendation_code_foreign');
         });
-        Schema::table('starting_provision_recomendations', function(Blueprint $table) {
-            $table->dropForeign('starting_provision_recomendations_location_id_foreign');
-            $table->dropForeign('starting_provision_recomendations_location_length_foreign');
-            $table->dropForeign('starting_provision_recomendatons_provision_id_foreign');
+        Schema::table('starting_provision_recommendations', function(Blueprint $table) {
+            $table->dropForeign('starting_provision_recommendations_location_id_foreign');
+            $table->dropForeign('starting_provision_recommendations_location_length_foreign');
+            $table->dropForeign('starting_provision_recommendatons_provision_id_foreign');
         });
         Schema::table('dungeon_runs', function(Blueprint $table) {
             $table->dropForeign('dungeon_runs_location_id_foreign');
@@ -215,13 +215,13 @@ class InitialMigration extends Migration
         });
         Schema::drop('dungeon_run_provisions');
         Schema::drop('dungeon_runs');
-        Schema::drop('starting_provision_recomendations');
+        Schema::drop('starting_provision_recommendations');
         Schema::drop('character_location_pairings');
         Schema::drop('provisions');
         Schema::drop('difficulty_levels');
         Schema::drop('location_lengths');
         Schema::drop('characters');
-        Schema::drop('character_recomendation_codes');
+        Schema::drop('character_recommendation_codes');
         Schema::drop('dungeon_run_characters');
         Schema::drop('curios');
         Schema::drop('locations');

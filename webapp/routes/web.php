@@ -14,13 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/dungeonRun', 'DungeonRunController@StartRun')->name('dungeonRun');
-Route::post('/saveDungeonRun', 'DungeonRunController@SaveRun')->name('saveDungeonRun');
-Route::get('/characterSelection/{slot}/{location}', 'DungeonRunController@GetCharacterSelection')->name('characterSelection');
-Route::get('/provisionRecomendations/{location}/{length}', 'DungeonRunController@GetProvisionRecomendations')->name('provisionRecomendations');
-
-Route::get('/statistics', 'StatisticsController@Index')->name('statistics');
-
-Route::get('gameInformation', 'GameInformationController@Index')->name('gameInformation');
+$router->get( 'api/locations',                                'ApiController@getLocations');
+$router->get( 'api/difficultyLevels',                         'ApiController@getDifficultyLevels');
+$router->get( 'api/locationLengths',                          'ApiController@getLocationLengths');
+$router->get( 'api/characters',                               'ApiController@getCharacters');
+$router->get( 'api/provisions',                               'ApiController@getProvisions');
+$router->get( 'api/characterSuggestions/{slot}/{location}',   'ApiController@getCharacterSelection');
+$router->get( 'api/provisionSuggestions/{location}/{length}', 'ApiController@getProvisionRecommendations');
+$router->post('api/saveRun',                                  'ApiController@saveRun');
 

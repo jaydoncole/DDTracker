@@ -1,15 +1,21 @@
+# Local docker 
 version: "2"
 services:
-    web:
-        image: nginx:latest
+    nginx:
         ports:
             - "8080:80"
+        image: nginx:latest
         volumes:
-            - ../webapp:/www
             - ./site.conf:/etc/nginx/conf.d/site.conf
+            - ../webapp:/www
         depends_on: 
             - mysql
             - php
+        environment:
+          VIRTUAL_HOST: darkest.local
+          VIRTUAL_PORT: 3000
+        expose:
+          - "3000"
     php:
         build: .
         image: php
@@ -19,14 +25,22 @@ services:
             - ../webapp:/www
         depends_on:
             - mysql
+        user: "1000"
     mysql:
         image: mysql:latest
         ports:
             - "3306:3306"
         volumes:
             - ./docker.cnf:/etc/mysql/conf.d/docker.cnf
+            - darkest-datavolume:/var/lib/mysql
         environment:
             MYSQL_ROOT_PASSWORD: welcome
             MYSQL_DATABASE: darkest
             MYSQL_USER: darkest
             MYSQL_PASWORD: welcome
+volumes:
+  darkest-datavolume:
+networks:
+  default:
+    external:
+      name: nginx-proxy

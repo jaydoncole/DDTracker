@@ -15,7 +15,10 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('App', require('./App.vue'));
+
+//axios.defaults.baseURL = 'http://dd.zeridon.com/api'
+axios.defaults.baseURL = 'http://darkest.local/api'
 
 const app = new Vue({
     el: '#app'

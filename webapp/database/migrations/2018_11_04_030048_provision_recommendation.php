@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ProvisionRecomendation extends Migration
+class ProvisionRecommendation extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class ProvisionRecomendation extends Migration
      */
     public function up()
     {
-        DB::table('starting_provision_recomendations')->insert(
+        DB::table('starting_provision_recommendations')->insert(
             array(
                 // The Ruins (location_id 1)
                 array('location_id' => 1, 'location_length' => 1, 'provision_id' => 1, 'recommended_amount' => 12),

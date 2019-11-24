@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CharacterRecomendationCode extends Model
+class StartingProvisionRecommendation extends Model
 {
     public $timestamps = false;
 }
